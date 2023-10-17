@@ -1,0 +1,132 @@
+                     Training day-11
+-----------------------------------------------------------					
+# best time to buy and sell stock
+#using brute force it optimal solution but takes more time
+-----------------------------------------------------------
+l=list(map(int,input().split(' ')))
+max=0
+for i in range(len(l)):
+    for j in range(i+1,len(l)):
+        if (l[j]-l[i])>max:
+            max=l[j]-l[i];
+print(max)'''
+ # solving using greedy approach reduce time but not optimal
+class Solution(object):
+  def maxProfit(price):
+    p=0
+    buy=price[0]
+    for i in range(len(price)):
+        if price[i]<buy:
+            buy=price[i]
+        elif price[i]-buy>p:
+            p=price[i]-buy
+    return p
+price=list(map(int,input().split(' ')))
+print(maxProfit(price))	
+-----------------------------------------------------------
+# 	best time to buy and sell stock 2
+-----------------------------------------------------------
+//BRUTE FORCE
+
+l=list(map(int,input().split(' ')))
+max=0
+for i in range(1,len(l)):
+    if l[i]>l[i-1]:
+        max+=l[i]-l[i-1];
+print(max)
+-----------------------------------------------------------
+#knapcsack
+-----------------------------------------------------------
+w=int(input())
+wt=list(map(int,input().split(' ')))
+pr=list(map(int,input().split(' ')))
+perkg=[]
+for i in range(len(wt)):
+    perkg.append(pr[i]/wt[i])
+l=list(zip(wt,pr))
+#l.sort(key=lambda x:x[2],reverse=True) #to sort in reverse order
+l.sort(key=lambda x:x[1]/x[0],reverse=True)
+print(list(l))
+maxpr=0
+for weight,profit in l:
+    if weight<=w:
+        maxpr+= profit
+        w-=weight
+    else:
+        maxpr+=w*(profit/weight)
+        break
+print(maxpr)
+//output:
+10
+20 10 5 15 25
+100 75 40 55 65
+[(5, 40), (10, 75), (20, 100), (15, 55), (25, 65)]
+77.5
+-----------------------------------------------------------
+# 3 pointer triplet sum
+-----------------------------------------------------------
+l=list(map(int,input().split(' ')))
+t=int(input())
+for i in range(len(l)):
+    for j in range(i+1,len(l)):
+        for k in range(j+1,len(l)):
+            if l[i]+l[j]+l[k]==t:
+                print(f"{l[i]}+{l[j]}+{l[k]}")
+//output:-
+5 8 1 2 3
+13
+8+2+3
+
+              (or)
+
+def isvalid(n,k,stalls,mid):
+    lastcow=stalls[0]
+    count=1
+    for i in stalls:
+        if i-lastcow>=mid:
+            count+=1
+            lastcow=i
+        return True if k==count else False
+
+def solve(n,k,stalls):
+    stalls.sort()
+    si=stall[0]
+    li=stalls[-1]-stalls[0]
+    res=0
+    while si<=li:
+        mid=(si+li)//2
+        if isvalid(n,k,stalls,mid):
+            res=mid
+            si=mid+1
+        else:
+            li=mid-1
+    return res
+------------------------------------------------------------------
+Min-Max. Aggressive cows
+------------------------------------------------------------------
+def can_i_place_My_Cows(arr, min_dist, cows):
+    last = arr[0]
+    count = 1
+    for i in range(1, len(arr)):
+        if abs(last - arr[i]) >= min_dist:
+            count += 1
+            last = arr[i]
+    if count >= cows:
+        return True
+    else:
+        return False
+def solve(arr, cows):
+    limit = max(arr)-min(arr)
+    for i in range(1, limit+1):
+        if can_i_place_My_Cows(arr, i, cows) == True:
+            continue
+        else:
+            return i-1
+arr = [0, 3, 4, 7, 9, 10]
+cows = 4
+result = solve(arr, cows)
+print(result)
+
+
+ 
+ 
