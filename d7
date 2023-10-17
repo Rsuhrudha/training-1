@@ -1,0 +1,118 @@
+                        TRAINING Day7
+---------------------------------------------------------------
+
+
+//n Queens using oops concept
+
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        col=[]
+        posdiag=[]
+        negdiag=[]
+        board=[["."]*n for i in range(n)]
+        ans=[]
+        def backtracking(r):
+            if r==n:
+                l=["".join(i) for i in board]
+                ans.append(l)
+                return
+            for c in range(n):
+                if c in col or (r+c) in posdiag or (r-c) in negdiag:
+                    continue
+                board[r][c]='Q'
+                col.append(c)
+                posdiag.append(r+c)
+                negdiag.append(r-c)
+
+                backtracking(r+1)
+
+                board[r][c]="."
+                col.remove(c)
+                posdiag.remove(r+c)
+                negdiag.remove(r-c)
+        backtracking(0)
+        return ans
+-----------------------------------------------------------------------------------------------------
+//n queens online class
+
+
+def is_valid(board, row, col, n):
+    for i in range(col):  # check horizontal
+        if board[row][i] == 1:
+            return False
+    i = row
+    j = col
+    while i >= 0 and j >= 0:  # upper left diag
+        if board[i][j] == 1:
+            return False
+        i -= 1
+        j -= 1
+    i = row
+    j = col
+    while i < n and j >= 0:  # bottom left diag
+        if board[i][j] == 1:
+            return False
+        i += 1
+        j -= 1
+
+    return True
+
+
+def solve(n):
+    board = [[0 for i in range(n)] for j in range(n)]
+
+    def backtrack(col):
+        if col == n:
+            return True
+        for i in range(n):
+            if is_valid(board, i, col, n):
+                board[i][col] = 1
+
+                if backtrack(col + 1):
+                    return True
+
+                board[i][col] = 0
+
+        return False
+
+    if backtrack(0):
+        for row in board:
+            print(row)
+    else:
+        print("no solution")
+
+
+n = 5
+solve(n)
+
+
+-----------------------------------------------------------------------------------------------------
+//input :-banana 
+  Task:-no of Ana in the given string
+
+s=input("enter a string")
+c=input("strin that you want to repeat")
+x=len(c)
+print(x)
+count=0
+for i in range(len(s)):
+    if s[i:x]==c:
+        #print(s)
+        count+=1
+    x=x+1
+print(count)
+-----------------------------------------------------------------------------------------------------
+#quick-sort. (Online)
+
+def quick_sort(a):
+    if len(a)<=1:
+        return a
+    elif :
+        pivot=a[o]
+        left=[i for i in a if i<pivot]
+        right=[i for i in a if i>pivot]
+        return quick_sort(left)+[pivot]+quick_sort(right)
+l=list(map(int,input().split(',')))
+res=quick_sort(l)
+print(res)
+-----------------------------------------------------------------------------------------------------
