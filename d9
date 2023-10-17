@@ -1,0 +1,134 @@
+          DAY 9
+SEARCHING TECHNIQUES
+
+
+Stable Sorting:
+
+->In other words, if you have two elements with the same value, and one appears before the other in the original sequence, a stable sorting algorithm will ensure that the element that appeared first still appears first in the sorted sequence.
+->Stable sorting is useful in situations where you want to maintain the original order of equal elements, like when sorting by multiple criteria or when you want to preserve the input order for items with the same key.
+
+Unstable Sorting:
+
+->If you have two elements with the same value, and one appears before the other in the original sequence, an unstable sorting algorithm may swap their positions in the sorted sequence.
+->Unstable sorting is often faster or requires less memory overhead compared to stable sorting because it doesn't have to consider the original order of equal elements.
+Examples of stable sorting algorithms include Merge Sort and Bubble Sort, while examples of unstable sorting algorithms include Quick Sort and Heap Sort.
+
+Here's a simple example to illustrate the difference:
+
+Original Input: [(3, "Alice"), (2, "Bob"), (3, "Charlie"), (1, "David")]
+
+Stable Sorting Output: [(1, "David"), (2, "Bob"), (3, "Alice"), (3, "Charlie")]
+
+Unstable Sorting Output: [(1, "David"), (2, "Bob"), (3, "Charlie"), (3, "Alice")]
+
+In the stable sorting output, the relative order of elements with the same value (3) is preserved, while in the unstable sorting output, it may change.
+
+with time complexity
+-------------------------------------------------------------------------------------------------
+#binary search
+-------------------------------------------------------------------------------------------------
+l=list(map(int,input().split(',')))
+def binary_search(l,low,high,key):
+    mid=(low+high)//2
+    if l[mid]==key:
+        return mid
+    elif l[mid]<key:
+        return (l,mid+1,high,key)
+    elif l[mid]>key:
+        return (l,low,mid-1,key)
+    else:
+        return 0
+k=int(input())
+if binary_search(l,0,len(l)-1,k):
+    print("element is found ")
+else:
+    print("element not found")
+
+//output:-1, 2, 3, 5, 8
+5
+element is found
+-------------------------------------------------------------------------------------------------
+#linear search
+-------------------------------------------------------------------------------------------------
+l=list(map(int,input().split(',')))
+def linear(l,key):
+    flag = 0
+    for i in range(len(l)):
+        if l[i]==key:
+            flag+=1
+            return flag
+            break
+
+k=int(input())
+a=linear(l,k)
+
+if a==1:
+    print("element is found")
+else:
+    print("element not found")
+//output:-1,2,3
+4
+element not found
+-------------------------------------------------------------------------------------------------
+#Ceil
+-------------------------------------------------------------------------------------------------
+
+def find_ceiling(arr, target):
+    left, right = 0, len(arr) - 1
+    ceil_value = float('inf')  # Initialize the ceiling value as positive infinity
+
+    while left <= right:
+        mid = left + (right - left) // 2
+
+        if arr[mid] == target:
+            return arr[mid]
+
+        if arr[mid] < target:
+            left = mid + 1
+        else:
+            # Update the ceiling value and move left to explore smaller values
+            ceil_value = min(ceil_value, arr[mid])
+            right = mid - 1
+
+    return ceil_value
+sorted_list = [1, 2, 4, 7, 9, 12, 16]
+target = 8
+result = find_ceiling(sorted_list, target)
+print(f"The smallest number greater than or equal to {target} is {result}")
+
+-------------------------------------------------------------------------------------------------
+#Floor
+-------------------------------------------------------------------------------------------------
+n=int(input())
+si=0
+li=n//2
+floor=-1
+while si<=li:
+    mid=(si+li)//2
+    sq=mid*mid
+    if sq==n:
+        floor=mid
+        break
+    elif sq<n:
+        floor=mid
+        si=mid+1
+    else :
+        li=mid-1
+print(floor)
+n=int(input())
+si=0
+li=n//2
+floor=-1
+while si<=li:
+    mid=(si+li)//2
+    sq=mid*mid
+    if sq==n:
+        floor=mid
+        break
+    elif sq<n:
+        floor=mid
+        si=mid+1
+    else :
+        li=mid-1
+print(floor)
+-------------------------------------------------------------------------------------------------
