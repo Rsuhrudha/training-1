@@ -1,0 +1,158 @@
+---------------------------------------------------------------
+         Training 3
+---------------------------------------------------------------
+
+//Task:-take a number as input convert it into binary form and change that particular position bit
+
+#include <stdio.h>
+#include<math.h>
+int main() {
+   
+   int n,pos;
+   scanf("%d %d",&n,&pos);
+   int b[n],i=0,j,d,k=0,a[n],c,sum=0;
+   while(n>0)
+   {
+       d=n%2;
+       b[i]=d;
+       n=n/2;
+       i++;
+   }
+   
+   for(j=(i-1);j>=0;j--)
+   { 
+      a[k]=b[j];
+      k++;
+   }
+   for(j=0;j<k ;j++){
+       if(j==pos){
+           if(a[j]==1)
+           {
+               a[j]=0;
+           }
+           else
+           {
+               a[j]=1;
+           }
+       }
+   }
+   i=0;
+   for(j=(k-1);j>=0;j--)
+   {
+       c=a[j]*pow(2,i);
+       sum=sum+c;
+       i++;
+   }
+   printf("%d",sum);
+    return 0;
+}
+---------------------------------------------------------------
+
+   BITWISE OPERATORS
+---------------------------------------------------------------
+NOTE:-logical && operator :-if one condition is true thenit checks for next condition ,else stop execution at the 1st condition if that particular condition fails.
+eg:-
+main()
+{
+int a=10;
+if(a>100 && ++a<200 && a++==12)
+{
+printf("%d",a);
+}
+else
+{printf("hai %d",a);
+}
+}
+---------------------------------------------------------------
+//bitwise & operator
+---------------------------------------------------------------
+NOTE:- it evaluate the whole expression even if one condition is false.
+
+eg:-
+if(a>100  & a++<200 & a++==12)
+{
+   printf("hello %d",a);
+}
+else
+{
+  printf("hai %d",a);
+}
+ 
+ //output:-hai 12
+              11 memory   12
+   10>100 & a++<200 & a++==12
+     false    10 display   11
+	 
+	 //output:-a=12;
+	 
+	 
+---------------------------------------------------------------
+OR OPERATOR
+---------------------------------------------------------------NOTE:-
+if one condition is true then it will not check the next condition.
+
+eg:-
+int a=10
+if(a>100 || a++<200 || a++==12)
+{
+printf("hello %d",a);
+}
+else
+{
+printf("hai %d",a);
+}
+//output:-	hello 11
+--------------------------------------------------------------
+bitwise or
+--------------------------------------------------------------
+NOTE:-
+if executes the complete statement 
+eg 
+int a=10
+if(a>100 | a++<200 | a++==12)
+{
+printf("hello %d",a);
+}
+else
+{
+printf("hai %d",a);
+}
+//output:-	hello 12
+-------------------------------------------------------------
+negation ~
+-------------------------------------------------------------
+NOTE:-
+n = -(n+1);
+int a=~101;
+printf("%d",a);
+ 
+ a=-(-101+1)
+  // 100
+  -------------------------------------------------------------
+  ****** PROBLEMS ******
+  -------------------------------------------------------------
+  EVEN ODD WITH BITWISE &
+  -------------------------------------------------------------
+  main()                    NOTE:-in this binary form of a number is multiplied with
+  {                               binary value of 1.
+  int a=12;
+  if(a&1==1)
+  {
+  printf("odd");
+  }
+  else
+  {
+  printf("even");
+  }
+  }
+  -------------------------------------------------------------
+  NO OF 1'S IN THE NUMBER IN ITS BINARY FORM
+  NO OF SET
+  -------------------------------------------------------------
+  int a;
+  while(a)
+  {
+  count++;
+  a=a&(a-1);
+  }
+  printf("%d",count);
