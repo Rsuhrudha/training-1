@@ -1,0 +1,324 @@
+Training day 1
+
+-----------------------------------------------------------------------------------------------------
+//neon number
+-----------------------------------------------------------------------------------------------------
+import java.util.Scanner;
+import java.util.*;
+class Siva{
+    public static void main(String[] args) {
+        int n;
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+        int m=n*n;
+        int sum=0;
+        while(m>0)
+        {
+            m=m%10;
+            sum=sum+m;
+            m=m/10;
+        }
+        if(sum==n)
+        System.out.println("neon number");
+        else
+         System.out.println("neon number");
+    }
+}
+-----------------------------------------------------------------------------------------------------
+//neon numbers in given range
+-----------------------------------------------------------------------------------------------------
+import java.util.*;
+class Siva{
+    public static void main(String[] args) {
+        int n,q,i,sum1=0,sum2=0;
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+        q=sc.nextInt();
+        for(i=n;i<q;i++)
+        {
+         int m=i*i;
+         int sum=0;
+        while(m>0)
+        {
+            m=m%10;
+            sum=sum+m;
+            m=m/10;
+        }
+        if(sum==n)
+        {
+            sum1=sum1+1;
+        }
+        }
+     System.out.println("no of neon numbers is:- "+sum1);
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+    //neon number using inheritance concept
+-----------------------------------------------------------------------------------------------------
+class NeonNumber {
+    int num;
+
+    public NeonNumber(int num) {
+        this.num = num;
+    }
+
+    public boolean isNeon() {
+        int square = num * num;
+        int sumOfDigits = 0;
+
+        while (square > 0) {
+            int digit = square % 10;
+            sumOfDigits += digit;
+            square /= 10;
+        }
+
+        return sumOfDigits == num;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        NeonNumber neonNumber = new NeonNumber(9);
+        if (neonNumber.isNeon()) {
+            System.out.println(neonNumber.num + " is a neon number.");
+        } else {
+            System.out.println(neonNumber.num + " is not a neon number.");
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+//magical prime number
+-----------------------------------------------------------------------------------------------------
+import java.util.*;
+class Siva{
+    public static void main(String[] args) {
+        int i,x,sum=0;
+        Scanner sc=new Scanner(System.in);
+       int m=sc.nextInt();
+       int rev=0;
+        while(m>0)
+        {
+            x=m%10;
+            rev=(rev*10)+x;
+            m=m/10;
+        }
+        System.out.println("rev:-"+rev);
+        if(rev<2)
+        System.out.println("not prime");
+        else
+        {
+        for(i=2;i<rev;i++)
+        {
+            if(rev%i==0)
+            {
+                sum=1;
+            }
+        }}
+        if(sum==1)
+        System.out.println("not prime");
+        if(sum==0)
+        System.out.println("prime");
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+//magical prime number using inheritance concept
+-----------------------------------------------------------------------------------------------------
+import java.util.*;
+
+class MagicalPrime {
+    int n;
+
+    public MagicalPrime(int n) {
+        this.n = n;
+    }
+
+    public boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isMagical() {
+        int rev = 0, i;
+        int temp = n;
+        while (temp > 0) {
+            int digit = temp % 10;
+            rev = (rev * 10) + digit;
+            temp = temp / 10;
+        }
+
+        if (rev < 2) {
+            System.out.println(n + " is not a prime");
+        } else if (isPrime(rev)) {
+            System.out.println(n + " is a magical prime");
+        } else {
+            System.out.println(n + " is not a magical prime");
+        }
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        MagicalPrime mp = new MagicalPrime(m);
+        mp.isMagical();
+    }
+}
+-----------------------------------------------------------------------------------------------------
+//space complexity
+-----------------------------------------------------------------------------------------------------
+
+Struct
+{
+ int a;
+ Int b;
+Int c;
+}s1;
+main()
+{
+printf("%d",sizeof(s1));
+}
+
+--output:- 4+4+4=12
+-----------------------------------------------------------------------------------------------------
+Struct
+{
+Int a;
+Float b;
+Char c;
+}s1;
+main()
+{
+printf("%d",sizeof(s1));
+}
+----output:-cycle size=8(float)
+            8+8+8=24
+-----------------------------------------------------------------------------------------------------
+Struct
+{
+Int a;
+Float b[100];
+Char c;
+}s1;
+main()
+{
+printf("%d",sizeof(s1));
+}
+----output:-cycle size=8(float)
+            8+(100*8)+8;
+            =816
+-----------------------------------------------------------------------------------------------------
+Struct
+{
+Int a[100];
+Float b;
+Char c;
+}s1;
+main()
+{
+printf("%d",sizeof(s1));
+}
+----output:-cycle size=8(float)
+   
+            100*4. //as size of int=4 thus 8-4=4;
+          400%8=0 
+Int size=400;
+Char 8
+Total size=400+8+8=416
+-----------------------------------------------------------------------------------------------------
+ Struct
+{
+Int a;
+Float b;
+Char c[100];
+}s1;
+main()
+{
+printf("%d",sizeof(s1));
+}
+----output:-cycle size=8(float)
+          100%8=4 
+           8-4=4
+Total size=104+8+8=120
+-----------------------------------------------------------------------------------------------------
+
+real-time examples of each core OOP concept:
+
+Class and Object:
+
+Example: A "Car" class with objects like "Toyota Corolla" and "Honda Civic."
+Encapsulation:
+
+Example: Private data members and public methods in a "BankAccount" class to control access to account details.
+Inheritance:
+
+Example: A "Vehicle" class with subclasses like "Car" and "Motorcycle" inheriting common attributes and methods.
+Polymorphism:
+
+Example: A "Shape" class with various subclasses like "Circle" and "Rectangle," each implementing a "calculateArea" method differently.
+Abstraction:
+
+Example: An "Animal" class with abstract methods like "eat" and "makeSound," where concrete animal classes like "Dog" and "Cat" provide their implementations.
+
+
+----------------------------------------------------------------------------------------------------
+
+class A:
+    def _init_(self,n,m):
+        self.n=n
+        self.m=m
+class B(A):
+    def _init_(self,n,m):
+        super()._init_(n,m)
+    def display(self):
+       l=[]
+       for i in range(0,self.n):
+           s=i**2
+           sum=0
+           while s>0:
+               rem=s%10
+               sum+=rem
+               s=s//10
+           if sum==i:
+                l.append(i)
+       print(l)
+class C(A):
+    def _init_(self,n,m):
+        super()._init_(n,m)
+    def prime(self,m):
+        is_prime=True
+        for i in range(2,self.m):
+            if self.m%i==0:
+                is_prime=False
+        if is_prime==True:
+            #print("it is prime number")
+            s=True
+            return s
+            res=str(self.m)
+            
+    def rev(self):
+      res=str(self.m)
+      res=res[::-1]
+      return res      
+n=int(input("enter a number for finding the range of a neon number"))
+obj=B(n,0)
+obj.display()
+m=int(input("enter a number to check whether the given number is magical prime number or not"))
+obj1=C(0,m)
+#print(obj1.m)
+loc=obj1.prime(obj1.m)
+#print(loc)
+loc1=obj1.rev()
+#print(loc1)
+if loc==True and obj1.prime(loc1)==True:
+    print("it is a magical number")
